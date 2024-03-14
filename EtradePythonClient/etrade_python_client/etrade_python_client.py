@@ -1,5 +1,7 @@
 """This Python script provides examples on using the E*TRADE API endpoints"""
 from __future__ import print_function
+import os
+import rauth 
 import webbrowser
 import json
 import logging
@@ -13,7 +15,9 @@ from market.market import Market
 
 # loading configuration file
 config = configparser.ConfigParser()
-config.read('config.ini')
+script_dir = os.path.dirname(os.path.abspath('config.ini'))
+config_path = os.path.join('../../', 'config.ini')
+config.read(config_path) 
 
 # logger settings
 logger = logging.getLogger('my_logger')
