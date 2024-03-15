@@ -42,6 +42,9 @@ class Market:
             data = response.json()
             if data is not None and "QuoteResponse" in data and "QuoteData" in data["QuoteResponse"]:
                 for quote in data["QuoteResponse"]["QuoteData"]:
+                    for ticker in quote["All"]:
+                        print(f"{ticker} : {quote['All'][ticker]}")
+                    """
                     if quote is not None and "dateTime" in quote:
                         print("Date Time: " + quote["dateTime"])
                     if quote is not None and "Product" in quote and "symbol" in quote["Product"]:
@@ -68,6 +71,7 @@ class Market:
                         print("Day's Range: " + str(quote["All"]["low"]) + "-" + str(quote["All"]["high"]))
                     if quote is not None and "All" in quote and "totalVolume" in quote["All"]:
                         print("Volume: " + str('{:,}'.format(quote["All"]["totalVolume"])))
+                    """
             else:
                 # Handle errors
                 if data is not None and 'QuoteResponse' in data and 'Messages' in data["QuoteResponse"] \
